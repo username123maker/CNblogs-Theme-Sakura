@@ -30,10 +30,10 @@
 					link: 'https://creativecommons.org/licenses/by/4.0'
 				},
 				sponsor: {
-					enable: false,
+					enable: true,
 					paypal: null,
-					wechat: '',
-					alipay: ''
+					wechat: null,
+					alipay: null
 				},
 				github: {
 					enable: false,
@@ -43,21 +43,18 @@
 				},
 				topImg: {
 					homeTopImg: [
-						"https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190806172418911-2037584311.jpg",
+						"https://images.cnblogs.com/cnblogs_com/yycx/1823911/o_201112042019851729.jpg",
 					],
 					notHomeTopImg: [
-						"https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190806172418911-2037584311.jpg"
+						"https://images.cnblogs.com/cnblogs_com/yycx/1823911/o_201112042019851729.jpg",
 					]
 				},
 				topInfo: {
 					title: 'Hi,Toretto',
 					text: 'You got to put the past behind you before you can move on.',
-					github: "",
-					weibo: "",
-					telegram: "",
-					music: "",
-					twitter: "",
-					zhihu: "",
+					github: "https://github.com/",
+					twitter: "https://twitter.com/home?lang=zh-cn",
+					zhihu:"",
 					mail: "",
 				}
 			};
