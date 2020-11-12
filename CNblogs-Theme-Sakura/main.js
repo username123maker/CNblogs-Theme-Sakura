@@ -822,26 +822,6 @@
 					`</div>` +
 					`<div class="main-header">` +
 					`</div>` +
-					`<div class="focusinfo no-select">` +
-					`       <h1 class="center-text glitch is-glitching Ubuntu-font" data-text="Hi, Toretto!">${config.title}</h1>` +
-					`       <div class="header-info"><p><i class="fa fa-quote-left"></i> ${config.text} <i class="fa fa-quote-right"></i></p>` +
-					`           <div class="top-social_v2">` +
-					`              <li id="bg-pre"><img class="flipx" src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808103709869-648245711.png"></li>` +
-					`              <li><a href="${config.github}" target="_blank" class="social-github" title="github"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"></a></li>` +
-					`              <li><a href="${config.weibo}" target="_blank" class="social-sina" title="sina"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095623418-1617766229.png"></a></li>` +
-					`              <li><a href="${config.telegram}" target="_blank" class="social-lofter" title="telegram"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095628401-835828752.png"></a></li>` +
-					`              <li><a href="${config.music}" target="_blank" class="social-wangyiyun" title="CloudMusic"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095640330-1209750721.png"></a></li>` +
-					`              <li><a href="${config.twitter}" target="_blank" class="social-wangyiyun" title="Twitter"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095635213-701885869.png"></a></li>` +
-					`              <li><a href="${config.zhihu}" target="_blank" class="social-wangyiyun" title="Zhihu"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095650119-1882504549.png"></a></li>` +
-					`              <li><a href="${config.mail}" target="_blank" class="social-wangyiyun" title="E-mail"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095613956-1350546638.png"></a></li>` +
-					`              <li id="bg-next"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808103709869-648245711.png"></li>` +
-					`           </div>` +
-					`      </div>` +
-					`</div>` +
-					`<div class="wave">` +
-					`   <div id="banner_wave_1"></div>` +
-					`   <div id="banner_wave_2"></div>` +
-					`</div>` +
 					`<div class="scroll-down" data-offset="-45">` +
 					`        <span class="hidden">Scroll Down</span>` +
 					`        <i class="fa fa-chevron-down" aria-hidden="true"></i>` +
@@ -962,7 +942,7 @@
 			let post_view_count = $('#post_view_count').text() //阅读数
 			if (window.location.href.indexOf('articles') === -1) {
 				var header =
-						`<p class="entry-census"><span><a href="https://www.cnblogs.com/zouwangblog/"><img src="//pic.cnblogs.com/face/1646268/20190628143903.png"></a></span><span><a href="https://www.cnblogs.com/zouwangblog/">Toretto</a></span><span class="bull">·</span>${post_date}<span class="bull">·</span>${post_view_count} 次阅读</p>`;
+						`<p class="entry-census"><span><a href="https://www.cnblogs.com/zouwangblog/"><img src="//pic.cnblogs.com/face/1646268/20190628143903.png"></a></span><span><a href="https://www.cnblogs.com/yycx/">道物欲</a></span><span class="bull">·</span>${post_date}<span class="bull">·</span>${post_view_count} 次阅读</p>`;
 				$('.pattern-header').append(header)
 				$('.pattern-center').addClass('single-center')
 				$('.pattern-header').addClass('single-header')
