@@ -150,21 +150,6 @@
 				})
 				$('.chinese-font').css('display', 'none')
 			});
-			<!--离开页面改变title-->
-			var time;
-			var normar_title = document.title;
-			document.addEventListener('visibilitychange', function () {
-				if (document.visibilityState == 'hidden') {
-					clearTimeout(time);
-					document.title = '桥豆麻袋(＃°Д°)';
-				} else {
-					document.title = '你终于回来了(。・∀・)ノ';
-					time = setTimeout(function () {
-						document.title = normar_title;
-					}, 3000);
-
-				}
-			});
 		}
 
 		/**
@@ -739,9 +724,7 @@
 			//博客logo
 			var title = '<div class="site-branding">' +
 					'<span class="logolink moe-mashiro">' +
-					'<a href="https://www.cnblogs.com/zouwangblog/" alt="春原庄的雪">' +
-					'<ruby><span class="sakuraso">すのはら荘</span><span class="no">の</span><span class="shironeko">雪</span>' +
-					'<rt class="chinese-font">春原庄的雪</rt></ruby></a></span>' +
+					'<ruby><span class="sakuraso">道物欲</span><span class="no">的</span><span class="shironeko">博客</span>' +
 					'</div>'
 			$('body').prepend(title);
 
@@ -824,9 +807,6 @@
 					`           <div class="top-social_v2">` +
 					`              <li id="bg-pre"><img class="flipx" src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808103709869-648245711.png"></li>` +
 					`              <li><a href="${config.github}" target="_blank" class="social-github" title="github"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095618459-218538626.png"></a></li>` +
-					`              <li><a href="${config.weibo}" target="_blank" class="social-sina" title="sina"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095623418-1617766229.png"></a></li>` +
-					`              <li><a href="${config.telegram}" target="_blank" class="social-lofter" title="telegram"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095628401-835828752.png"></a></li>` +
-					`              <li><a href="${config.music}" target="_blank" class="social-wangyiyun" title="CloudMusic"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095640330-1209750721.png"></a></li>` +
 					`              <li><a href="${config.twitter}" target="_blank" class="social-wangyiyun" title="Twitter"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095635213-701885869.png"></a></li>` +
 					`              <li><a href="${config.zhihu}" target="_blank" class="social-wangyiyun" title="Zhihu"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095650119-1882504549.png"></a></li>` +
 					`              <li><a href="${config.mail}" target="_blank" class="social-wangyiyun" title="E-mail"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095613956-1350546638.png"></a></li>` +
