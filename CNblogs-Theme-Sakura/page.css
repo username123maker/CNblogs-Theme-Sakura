@@ -52,7 +52,7 @@
 }
 
 body {
-    cursor: url(https://files-cdn.cnblogs.com/files/zouwangblog/cursor.ico), auto;
+    cursor: url(https://blog-static.cnblogs.com/files/yycx/normal.ico), auto;
     background: #fff;
     color: #314659;
     min-height: 100% !important;
@@ -60,7 +60,7 @@ body {
 }
 
 body::before {
-    background: url(https://pic3.zhimg.com/v2-ad0e6eb8cabcd3ca4c743959e64b888f_r.jpg) center/cover no-repeat;
+    background: url(https://images.cnblogs.com/cnblogs_com/yycx/1823911/o_201112020845%E9%AD%94%E5%A5%B3%E5%85%B5%E5%99%A8.jpg) center/cover no-repeat;
 }
 
 body:before {
