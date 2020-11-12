@@ -10,12 +10,12 @@
 		constructor() {
 			this.defaluts = {
 				profile: {
-					enable: true,
+					enable: false,
 					avatar: null,
 					favicon: null,
 				},
 				catalog: {
-					enable: true,
+					enable: false,
 					move: true,
 					index: true,
 					level1: 'h2',
@@ -23,8 +23,8 @@
 					level3: 'h4',
 				},
 				signature: {
-					author: '道物欲',
-					enable: true,
+					author: null,
+					enable: false,
 					home: 'https://www.cnblogs.com',
 					license: 'CC BY 4.0',
 					link: 'https://creativecommons.org/licenses/by/4.0'
@@ -32,8 +32,8 @@
 				sponsor: {
 					enable: true,
 					paypal: null,
-					wechat: null,
-					alipay: null
+					wechat: 'https://www.cnblogs.com/images/cnblogs_com/zouwangblog/1477590/t_%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_20190704175553.png',
+					alipay: 'https://www.cnblogs.com/images/cnblogs_com/zouwangblog/1477590/t_%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_20190704174158.png'
 				},
 				github: {
 					enable: false,
@@ -43,18 +43,21 @@
 				},
 				topImg: {
 					homeTopImg: [
-						"https://images.cnblogs.com/cnblogs_com/yycx/1823911/o_201112042019851729.jpg",
+						"https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190806172418911-2037584311.jpg",
 					],
 					notHomeTopImg: [
-						"https://images.cnblogs.com/cnblogs_com/yycx/1823911/o_201112042019851729.jpg",
+						"https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190806172418911-2037584311.jpg"
 					]
 				},
 				topInfo: {
 					title: 'Hi,Toretto',
 					text: 'You got to put the past behind you before you can move on.',
-					github: "https://github.com/",
-					twitter: "https://twitter.com/home?lang=zh-cn",
-					zhihu:"",
+					github: "",
+					weibo: "",
+					telegram: "",
+					music: "",
+					twitter: "",
+					zhihu: "",
 					mail: "",
 				}
 			};
@@ -150,9 +153,26 @@
 				})
 				$('.chinese-font').css('display', 'none')
 			});
+			<!--离开页面改变title-->
+			var time;
+			var normar_title = document.title;
+			document.addEventListener('visibilitychange', function () {
+				if (document.visibilityState == 'hidden') {
+					clearTimeout(time);
+					document.title = '桥豆麻袋(＃°Д°)';
+				} else {
+					document.title = '你终于回来了(。・∀・)ノ';
+					time = setTimeout(function () {
+						document.title = normar_title;
+					}, 3000);
+
+				}
+			});
 		}
 
-		 //进入阅读模式
+		/**
+		 * 进入阅读模式
+		 */
 		goIntoReadingMode() {
 			let $win = $(window);
 			let _that = this;
@@ -164,7 +184,9 @@
 			}
 		}
 
-		// 进入正常模式
+		/**
+		 * 进入正常模式
+		 */
 		goIntoNormalMode() {
 			let $win = $(window);
 			let _that = this;
@@ -251,7 +273,7 @@
 			});
 
 
-			$("#navList").append('<li><a id="blog_nav_myyoulian" class="menu" href="https://www.cnblogs.com/zouwangblog/articles/11177049.html">友链</a><i></i></li>');
+			$("#navList").append('<li><a id="blog_nav_myyoulian" class="menu" href="https://www.cnblogs.com/zouwangblog/articles/11177049.html">友链</a><i></i></li><li><a id="blog_nav_myzanshang" class="menu" href="https://www.cnblogs.com/zouwangblog/articles/11340077.html">赞赏</a><i></i></li><li><a id="blog_nav_myguanyu" class="menu" href="">关于</a><i></i></li>');
 			//添加标签icon
 			$('#blog_nav_myhome').prepend('<i class="fa fa-fort-awesome" aria-hidden="true"></i>');
 			$('#blog_nav_contact').prepend('<i class="fa fa-address-book-o" aria-hidden="true"></i>');
@@ -260,6 +282,14 @@
 			$('#blog_nav_myyoulian').prepend('<i class="fa fa-link" aria-hidden="true"></i>');
 			$('#blog_nav_myzanshang').prepend('<i class="fa fa-heart" aria-hidden="true"></i>');
 			$('#blog_nav_myguanyu').prepend('<i class="fa fa-leaf" aria-hidden="true"></i>');
+
+			//添加li内嵌ui
+			let guanyu = '<ul class="sub-menu">' +
+					'<li><a href="https://www.cnblogs.com/zouwangblog/articles/11157339.html "><i class="fa fa-meetup" aria-hidden="true"></i> 我？</a></li>' +
+					'<li><a href="https://www.cnblogs.com/zouwangblog/articles/11346906.html "><i class="fa fa-area-chart" aria-hidden="true"></i> 统计</a></li>' +
+					'<li><a href="https://www.cnblogs.com/zouwangblog/articles/11350777.html "><i class="fa fa-heartbeat" aria-hidden="true"></i> 监控</a></li>' +
+					'<li><a href="https://www.cnblogs.com/zouwangblog/p/11541835.html "><i class="iconfont icon-taohua" aria-hidden="true"></i> 主题</a></li>' +
+					'</ul>';
 			$('#blog_nav_myguanyu').after(guanyu);
 
 		}
@@ -329,6 +359,76 @@
 					count++;
 				}, 500);
 			}
+		}
+
+		/**
+		 * 构建赞赏模块
+		 */
+		buildPostSponsor() {
+			const sponsor = this.defaluts.sponsor;
+			const github = this.defaluts.github;
+			const that = this;
+			if (!sponsor.enable) {
+				return;
+			}
+
+			$('#blog_post_info').prepend(`
+            <div class="esa-sponsor">
+                <a class="github" href="${github.enable ? github.link : 'https://github.com/Kaiyuan/donate-page'}" target="_blank" class="posa tr3" title="Github"></a>
+                <div class="text tr3">${sponsor.text || 'Sponsor'}</div>
+                <ul class="box posa tr3">
+                    <li class="paypal">PayPal</li>
+                    <li class="alipay">AliPay</li>
+                    <li class="wechat">WeChat</li>
+                </ul>
+                <div id="QRBox" class="posa left-100">
+                    <div id="MainBox"></div>
+                </div>
+            </div>`);
+
+			const $sponsor = $('.esa-sponsor');
+			const QRBox = $('#QRBox');
+			const MainBox = $('#MainBox');
+
+			function showQR(QR) {
+				if (QR) {
+					MainBox.css('background-image', 'url(' + QR + ')');
+				}
+				$sponsor.find('.text, .box, .github').addClass('blur');
+				QRBox.fadeIn(300, function () {
+					MainBox.addClass('showQR');
+				});
+			}
+
+			$sponsor.find('.box>li').click(function () {
+				var type = $(this).attr('class');
+				if (type === 'paypal') {
+					if (!sponsor.paypal) {
+						return that.showMessage('博主忘记设置 PayPal 收款地址');
+					}
+					window.open(sponsor.paypal, '_blank');
+				} else if (type === 'alipay') {
+					if (!sponsor.alipay) {
+						return that.showMessage('博主忘记设置支付宝收款二维码');
+					}
+					showQR(sponsor.alipay);
+				} else if (type === 'wechat') {
+					if (!sponsor.wechat) {
+						return that.showMessage('博主忘记设置微信收款二维码');
+					}
+					showQR(sponsor.wechat);
+				}
+			});
+
+			MainBox.click(function () {
+				MainBox.removeClass('showQR').addClass('hideQR');
+				setTimeout(function (a) {
+					QRBox.fadeOut(300, function () {
+						MainBox.removeClass('hideQR');
+					});
+					$sponsor.find('.text, .box, .github').removeClass('blur');
+				}, 600);
+			});
 		}
 
 		/**
@@ -549,47 +649,47 @@
 			const catalog = this.defaluts.catalog;
 
 			$('body').append(`<div class="esa-toolbar">
-                <button class="esa-toolbar-gotop"><div class="tips">返回顶部</div></button>
-                <button class="esa-toolbar-contents"><div class="tips">阅读目录</div></button>
+                <!--<button class="esa-toolbar-gotop"><div class="tips">返回顶部</div></button>-->
+                <!--<button class="esa-toolbar-contents"><div class="tips">阅读目录</div></button>-->
                 <button class="esa-toolbar-follow">捕获</button>
             </div>`);
 
-			let $btnGotop = $('.esa-toolbar-gotop');
-			let $btnContents = $('.esa-toolbar-contents');
+			// let $btnGotop = $('.esa-toolbar-gotop');
+			// let $btnContents = $('.esa-toolbar-contents');
 			let $btnFollow = $('.esa-toolbar-follow');
 
-			if (catalog.enable) {
-				$btnContents.on('click', () => {
-					let $catalog = $('.esa-catalog-contents');
-					if ($catalog.css('display') == 'none') {
-						$catalog.fadeIn();
-					} else {
-						$catalog.hide();
-					}
-				}).hover(() => {
-					$btnContents.find('.tips').show();
-				}, () => {
-					$btnContents.find('.tips').hide();
-				});
-			} else {
-				$btnContents.remove();
-			}
-			
-			$btnGotop.on('click', () => {
-				$(window).scrollTop(0);
-			}).hover(() => {
-				$btnGotop.find('.tips').show();
-			}, () => {
-				$btnGotop.find('.tips').hide();
-			});
-			
-			$(window).scroll(function () {
-				if (this.scrollY > 200) {
-					$btnGotop.fadeIn();
-				} else {
-					$btnGotop.fadeOut();
-				}
-			});
+			// if (catalog.enable) {
+			// 	$btnContents.on('click', () => {
+			// 		let $catalog = $('.esa-catalog-contents');
+			// 		if ($catalog.css('display') == 'none') {
+			// 			$catalog.fadeIn();
+			// 		} else {
+			// 			$catalog.hide();
+			// 		}
+			// 	}).hover(() => {
+			// 		$btnContents.find('.tips').show();
+			// 	}, () => {
+			// 		$btnContents.find('.tips').hide();
+			// 	});
+			// } else {
+			// 	$btnContents.remove();
+			// }
+			//
+			// $btnGotop.on('click', () => {
+			// 	$(window).scrollTop(0);
+			// }).hover(() => {
+			// 	$btnGotop.find('.tips').show();
+			// }, () => {
+			// 	$btnGotop.find('.tips').hide();
+			// });
+			//
+			// $(window).scroll(function () {
+			// 	if (this.scrollY > 200) {
+			// 		$btnGotop.fadeIn();
+			// 	} else {
+			// 		$btnGotop.fadeOut();
+			// 	}
+			// });
 
 			$btnFollow.on('click', () => {
 				loadLink(location.protocol + "//common.cnblogs.com/scripts/artDialog/ui-dialog.css", () => {
@@ -640,6 +740,13 @@
 			}
 
 			//博客logo
+			var title = '<div class="site-branding">' +
+					'<span class="logolink moe-mashiro">' +
+					'<a href="https://www.cnblogs.com/zouwangblog/" alt="春原庄的雪">' +
+					'<ruby><span class="sakuraso">すのはら荘</span><span class="no">の</span><span class="shironeko">雪</span>' +
+					'<rt class="chinese-font">春原庄的雪</rt></ruby></a></span>' +
+					'</div>'
+			$('body').prepend(title);
 
 
 		}
@@ -719,7 +826,10 @@
 					`       <div class="header-info"><p><i class="fa fa-quote-left"></i> ${config.text} <i class="fa fa-quote-right"></i></p>` +
 					`           <div class="top-social_v2">` +
 					`              <li id="bg-pre"><img class="flipx" src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808103709869-648245711.png"></li>` +
-					`              <li><a href="${config.github}" target="_blank" class="social-github" title="github"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"></a></li>` +
+					`              <li><a href="${config.github}" target="_blank" class="social-github" title="github"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095618459-218538626.png"></a></li>` +
+					`              <li><a href="${config.weibo}" target="_blank" class="social-sina" title="sina"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095623418-1617766229.png"></a></li>` +
+					`              <li><a href="${config.telegram}" target="_blank" class="social-lofter" title="telegram"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095628401-835828752.png"></a></li>` +
+					`              <li><a href="${config.music}" target="_blank" class="social-wangyiyun" title="CloudMusic"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095640330-1209750721.png"></a></li>` +
 					`              <li><a href="${config.twitter}" target="_blank" class="social-wangyiyun" title="Twitter"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095635213-701885869.png"></a></li>` +
 					`              <li><a href="${config.zhihu}" target="_blank" class="social-wangyiyun" title="Zhihu"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095650119-1882504549.png"></a></li>` +
 					`              <li><a href="${config.mail}" target="_blank" class="social-wangyiyun" title="E-mail"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095613956-1350546638.png"></a></li>` +
