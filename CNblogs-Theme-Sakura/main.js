@@ -10,7 +10,7 @@
 		constructor() {
 			this.defaluts = {
 				profile: {
-					enable: false,
+					enable: true,
 					avatar: null,
 					favicon: null,
 				},
@@ -344,76 +344,6 @@
 		}
 
 		/**
-		 * 构建赞赏模块
-		 */
-		buildPostSponsor() {
-			const sponsor = this.defaluts.sponsor;
-			const github = this.defaluts.github;
-			const that = this;
-			if (!sponsor.enable) {
-				return;
-			}
-
-			$('#blog_post_info').prepend(`
-            <div class="esa-sponsor">
-                <a class="github" href="${github.enable ? github.link : 'https://github.com/Kaiyuan/donate-page'}" target="_blank" class="posa tr3" title="Github"></a>
-                <div class="text tr3">${sponsor.text || 'Sponsor'}</div>
-                <ul class="box posa tr3">
-                    <li class="paypal">PayPal</li>
-                    <li class="alipay">AliPay</li>
-                    <li class="wechat">WeChat</li>
-                </ul>
-                <div id="QRBox" class="posa left-100">
-                    <div id="MainBox"></div>
-                </div>
-            </div>`);
-
-			const $sponsor = $('.esa-sponsor');
-			const QRBox = $('#QRBox');
-			const MainBox = $('#MainBox');
-
-			function showQR(QR) {
-				if (QR) {
-					MainBox.css('background-image', 'url(' + QR + ')');
-				}
-				$sponsor.find('.text, .box, .github').addClass('blur');
-				QRBox.fadeIn(300, function () {
-					MainBox.addClass('showQR');
-				});
-			}
-
-			$sponsor.find('.box>li').click(function () {
-				var type = $(this).attr('class');
-				if (type === 'paypal') {
-					if (!sponsor.paypal) {
-						return that.showMessage('博主忘记设置 PayPal 收款地址');
-					}
-					window.open(sponsor.paypal, '_blank');
-				} else if (type === 'alipay') {
-					if (!sponsor.alipay) {
-						return that.showMessage('博主忘记设置支付宝收款二维码');
-					}
-					showQR(sponsor.alipay);
-				} else if (type === 'wechat') {
-					if (!sponsor.wechat) {
-						return that.showMessage('博主忘记设置微信收款二维码');
-					}
-					showQR(sponsor.wechat);
-				}
-			});
-
-			MainBox.click(function () {
-				MainBox.removeClass('showQR').addClass('hideQR');
-				setTimeout(function (a) {
-					QRBox.fadeOut(300, function () {
-						MainBox.removeClass('hideQR');
-					});
-					$sponsor.find('.text, .box, .github').removeClass('blur');
-				}, 600);
-			});
-		}
-
-		/**
 		 * 构建收藏按钮
 		 */
 		buildPostFavoriteBtn() {
@@ -631,7 +561,7 @@
 			const catalog = this.defaluts.catalog;
 
 			$('body').append(`<div class="esa-toolbar">
-                <!--<button class="esa-toolbar-gotop"><div class="tips">返回顶部</div></button>-->
+                <button class="esa-toolbar-gotop"><div class="tips">返回顶部</div></button>
                 <!--<button class="esa-toolbar-contents"><div class="tips">阅读目录</div></button>-->
                 <button class="esa-toolbar-follow">捕获</button>
             </div>`);
@@ -722,11 +652,6 @@
 			}
 
 			//博客logo
-			var title = '<div class="site-branding">' +
-					'<span class="logolink moe-mashiro">' +
-					'<ruby><span class="sakuraso">道物欲</span><span class="no">的</span><span class="shironeko">博客</span>' +
-					'</div>'
-			$('body').prepend(title);
 
 
 		}
@@ -806,7 +731,7 @@
 					`       <div class="header-info"><p><i class="fa fa-quote-left"></i> ${config.text} <i class="fa fa-quote-right"></i></p>` +
 					`           <div class="top-social_v2">` +
 					`              <li id="bg-pre"><img class="flipx" src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808103709869-648245711.png"></li>` +
-					`              <li><a href="${config.github}" target="_blank" class="social-github" title="github"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095618459-218538626.png"></a></li>` +
+					`              <li><a href="${config.github}" target="_blank" class="social-github" title="github"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"></a></li>` +
 					`              <li><a href="${config.twitter}" target="_blank" class="social-wangyiyun" title="Twitter"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095635213-701885869.png"></a></li>` +
 					`              <li><a href="${config.zhihu}" target="_blank" class="social-wangyiyun" title="Zhihu"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095650119-1882504549.png"></a></li>` +
 					`              <li><a href="${config.mail}" target="_blank" class="social-wangyiyun" title="E-mail"><img src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808095613956-1350546638.png"></a></li>` +
