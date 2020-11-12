@@ -653,7 +653,7 @@
 			$('body').append(`<div class="esa-toolbar">
                 <!--<button class="esa-toolbar-gotop"><div class="tips">返回顶部</div></button>-->
                 <!--<button class="esa-toolbar-contents"><div class="tips">阅读目录</div></button>-->
-                <button class="esa-toolbar-follow">捕获</button>
+                <!--<button class="esa-toolbar-follow">捕获</button>-->
             </div>`);
 
 			// let $btnGotop = $('.esa-toolbar-gotop');
