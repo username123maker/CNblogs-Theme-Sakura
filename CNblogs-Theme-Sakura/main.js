@@ -159,9 +159,9 @@
 			document.addEventListener('visibilitychange', function () {
 				if (document.visibilityState == 'hidden') {
 					clearTimeout(time);
-					document.title = '桥豆麻袋(＃°Д°)';
+					document.title = '道物欲';
 				} else {
-					document.title = '你终于回来了(。・∀・)ノ';
+					document.title = '道物欲的博客';
 					time = setTimeout(function () {
 						document.title = normar_title;
 					}, 3000);
@@ -243,7 +243,7 @@
 			const blogTitle = $(this.cnblogs.blogTitle).find('h1 a').html();
 			const autherName = $(this.cnblogs.publicProfile).find('a:eq(0)').html();
 			let $title = $('head').find('title');
-			$title.html($title.html().replace(`春原庄的雪 | ${autherName}`, `${blogTitle}`));
+			$title.html($title.html().replace(`道物欲 | ${autherName}`, `${blogTitle}`));
 
 			// Build a tags button on navbar.
 			let $navList = $(this.cnblogs.navList);
