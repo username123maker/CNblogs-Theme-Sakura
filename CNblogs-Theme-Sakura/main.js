@@ -653,47 +653,47 @@
 			const catalog = this.defaluts.catalog;
 
 			$('body').append(`<div class="esa-toolbar">
-                <button class="esa-toolbar-gotop"><div class="tips">返回顶部</div></button>
-                <button class="esa-toolbar-contents"><div class="tips">阅读目录</div></button>
+                 <button class="esa-toolbar-gotop"><div class="tips">返回顶部</div></button>
+                 <button class="esa-toolbar-contents"><div class="tips">阅读目录</div></button>
                 <button class="esa-toolbar-follow">捕获</button>
             </div>`);
 
-			// let $btnGotop = $('.esa-toolbar-gotop');
-			// let $btnContents = $('.esa-toolbar-contents');
+ 			let $btnGotop = $('.esa-toolbar-gotop');
+			let $btnContents = $('.esa-toolbar-contents');
 			let $btnFollow = $('.esa-toolbar-follow');
 
-			// if (catalog.enable) {
-			// 	$btnContents.on('click', () => {
-			// 		let $catalog = $('.esa-catalog-contents');
-			// 		if ($catalog.css('display') == 'none') {
-			// 			$catalog.fadeIn();
-			// 		} else {
-			// 			$catalog.hide();
-			// 		}
-			// 	}).hover(() => {
-			// 		$btnContents.find('.tips').show();
-			// 	}, () => {
-			// 		$btnContents.find('.tips').hide();
-			// 	});
-			// } else {
-			// 	$btnContents.remove();
-			// }
-			//
-			// $btnGotop.on('click', () => {
-			// 	$(window).scrollTop(0);
-			// }).hover(() => {
-			// 	$btnGotop.find('.tips').show();
-			// }, () => {
-			// 	$btnGotop.find('.tips').hide();
-			// });
-			//
-			// $(window).scroll(function () {
-			// 	if (this.scrollY > 200) {
-			// 		$btnGotop.fadeIn();
-			// 	} else {
-			// 		$btnGotop.fadeOut();
-			// 	}
-			// });
+			if (catalog.enable) {
+				$btnContents.on('click', () => {
+					let $catalog = $('.esa-catalog-contents');
+					if ($catalog.css('display') == 'none') {
+						$catalog.fadeIn();
+					} else {
+						$catalog.hide();
+					}
+				}).hover(() => {
+					$btnContents.find('.tips').show();
+				}, () => {
+					$btnContents.find('.tips').hide();
+				});
+			} else {
+				$btnContents.remove();
+			}
+			
+			$btnGotop.on('click', () => {
+				$(window).scrollTop(0);
+			}).hover(() => {
+				$btnGotop.find('.tips').show();
+			}, () => {
+				$btnGotop.find('.tips').hide();
+			});
+			
+			$(window).scroll(function () {
+				if (this.scrollY > 200) {
+					$btnGotop.fadeIn();
+				} else {
+					$btnGotop.fadeOut();
+				}
+			});
 
 			$btnFollow.on('click', () => {
 				loadLink(location.protocol + "//common.cnblogs.com/scripts/artDialog/ui-dialog.css", () => {
