@@ -13,6 +13,8 @@
 					enable: false,
 					avatar: null,
 					favicon: null,
+					notice: '知识尚浅，博客中大多数功能不能用',
+					authorName: '道物欲',
 				},
 				catalog: {
 					enable: false,
