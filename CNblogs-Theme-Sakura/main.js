@@ -15,7 +15,7 @@
 					favicon: null,
 				},
 				catalog: {
-					enable: false,
+					enable: true,
 					move: true,
 					index: true,
 					level1: 'h2',
@@ -23,17 +23,17 @@
 					level3: 'h4',
 				},
 				signature: {
-					author: null,
-					enable: false,
+					author: '道物欲',
+					enable: true,
 					home: 'https://www.cnblogs.com',
 					license: 'CC BY 4.0',
 					link: 'https://creativecommons.org/licenses/by/4.0'
 				},
 				sponsor: {
-					enable: true,
+					enable: false,
 					paypal: null,
-					wechat: 'https://www.cnblogs.com/images/cnblogs_com/zouwangblog/1477590/t_%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_20190704175553.png',
-					alipay: 'https://www.cnblogs.com/images/cnblogs_com/zouwangblog/1477590/t_%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_20190704174158.png'
+					wechat: '',
+					alipay: ''
 				},
 				github: {
 					enable: false,
