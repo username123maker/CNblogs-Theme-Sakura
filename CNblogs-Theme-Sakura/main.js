@@ -742,9 +742,8 @@
 			//博客logo
 			var title = '<div class="site-branding">' +
 					'<span class="logolink moe-mashiro">' +
-					'<a href="https://www.cnblogs.com/zouwangblog/" alt="春原庄的雪">' +
-					'<ruby><span class="sakuraso">すのはら荘</span><span class="no">の</span><span class="shironeko">雪</span>' +
-					'<rt class="chinese-font">春原庄的雪</rt></ruby></a></span>' +
+					'<a href="https://www.cnblogs.com/yycx/" alt="道物欲">' +
+					'<ruby><span class="sakuraso">道物欲</span><span class="no">' +
 					'</div>'
 			$('body').prepend(title);
 
